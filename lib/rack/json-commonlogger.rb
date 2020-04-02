@@ -35,7 +35,7 @@ module Rack
       log = {
         :host => env['HTTP_X_FORWARDED_FOR'] || env["REMOTE_ADDR"] || "-",
         :user => env["REMOTE_USER"] || "-",
-        :time => now.strftime("%d/%b/%Y %H:%M:%S"),
+        :time => now.iso8601,
         :method => env["REQUEST_METHOD"],
         :path => env["PATH_INFO"],
         :query => env["QUERY_STRING"].empty? ? "" : "?"+env["QUERY_STRING"],
@@ -47,7 +47,7 @@ module Rack
 
       log = @custom_log.call(log, status, header, env) if @custom_log
 
-      logger.write(Yajl::Encoder.encode(log))
+      logger.write(log.to_json)
       logger.write("\n")
     end
 

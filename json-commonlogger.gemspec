@@ -14,7 +14,6 @@ Gem::Specification.new do |gem|
   gem.version       = '0.1.0'
 
   gem.add_dependency 'rack'
-  gem.add_dependency 'yajl-ruby'
   gem.add_development_dependency 'bundler'
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'debugger'
