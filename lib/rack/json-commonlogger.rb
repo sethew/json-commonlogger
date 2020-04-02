@@ -1,4 +1,3 @@
-require 'yajl'
 require 'rack/body_proxy'
 
 module Rack
